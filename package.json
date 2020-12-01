@@ -4,6 +4,7 @@
     "description": "seedkeeper-client",
     "main": "index.html",
     "dependencies": {
+        "axios": "^0.21.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
