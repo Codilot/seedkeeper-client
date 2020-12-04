@@ -1,8 +1,22 @@
-@import "~antd/dist/antd.less"; 
+// @import '~antd/lib/style/themes/default.less';
+@import "~antd/dist/antd.less"; // Import Ant Design styles by less entry
+// @import 'your-theme-file.less'; --> variables to override above
+
+
 @primary-color: #5B83AD;
 
 @fav-color: steelblue;
 @font: 38px;
+body {
+  font-family: 'Heebo', sans-serif;
+}
+
+h1 {
+  font-weight: 100; 
+}
+p {
+  font-weight: 700;
+}
 
 .foo {
   color: @fav-color;

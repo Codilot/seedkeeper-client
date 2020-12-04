@@ -4,7 +4,8 @@ import './App.less';
 
 const App = () => (
     <div className="App">
-        <p className={"foo"}>Hello world!</p>
+        <h1 className={"foo"}>Hello world!</h1>
+        <p className={"bar"}>My text bla bla bla</p>
         <Button type="primary">Button</Button>
     </div>
 );
