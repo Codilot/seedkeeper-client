@@ -1,13 +1,38 @@
 import React from 'react';
-import { Button } from 'antd';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+  
+import Register from './components/register'
+import Login from './components/login'
+import Home from './components/home'
+import MainMenu from './components/navigation/MainMenu'
+import Brand from './components/brand'
 import './App.less';
 
 const App = () => (
-    <div className="App">
-        <h1 className={"foo"}>Hello world!</h1>
-        <p className={"bar"}>My text bla bla bla</p>
-        <Button type="primary">Button</Button>
-    </div>
+    <Router>
+        <div className="App">
+            <nav style={{position: "relative"}}>
+                <Brand />
+                <MainMenu />
+            </nav>
+            <Switch>
+                <Route path="/register">
+                    <Register />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </div>
+    </Router>
 );
 
 export default App;
