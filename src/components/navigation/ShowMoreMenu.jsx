@@ -25,15 +25,13 @@ const ShowMoreMenu = () => {
           style={{
             border: 'none',
             padding: '3px 5px 0 0',
-            boxShadow: 'none'
+            boxShadow: 'none',
+            backgroundColor: 'transparent'
           }}
+          type="primary"
+          shape="circle"
+          icon={<MoreOutlined />}
         >
-          <MoreOutlined
-            style={{
-              fontSize: 20,
-              verticalAlign: 'center',
-            }}
-          />
         </Button>
       </Dropdown>
     );

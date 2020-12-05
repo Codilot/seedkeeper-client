@@ -5,7 +5,7 @@ import { Button, Row, Col, Space } from 'antd';
 const Home = () => (
     <Row gutter={[8, { xs: 8, md: 16 }]}>
         <Col className="gutter-row" offset={2} span={20}>
-            <h1 className={"foo"}>Hello world!</h1>
+            <h1 className={"foo"}>Saatgut erhalten durch Vermehrung</h1>
             <p className={"bar"}>My text bla bla bla</p>
         </Col>
         <Col className="gutter-row" offset={2} span={20}>

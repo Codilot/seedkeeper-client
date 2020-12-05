@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const style = {
     position: "absolute",
     left: "8px",
-    top: "4px",
     fontWeight: "bold",
     fontSize: 16
   }
