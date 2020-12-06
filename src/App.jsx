@@ -18,8 +18,8 @@ const { Header, Content, Footer } = Layout;
 const styles = {
     header: { position: 'fixed', zIndex: 1, width: '100%', padding: '0 10px' },
     navbar: { position: "relative" },
-    content: { marginTop: 64, height: '100%' },
-    contentInner: { height: '100%', minHeight: 380 },
+    content: { marginTop: 64, minHeight: '100%' },
+    contentInner: { paddingTop: 20},
     footer: { textAlign: 'center' }
 }
 

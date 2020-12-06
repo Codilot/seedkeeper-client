@@ -12,8 +12,8 @@ const menuStyles = {
 const MainMenu = () => (
     <div style={menuStyles}>
         <Space split={<Divider type="vertical" />}>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/register" component={Typography.Link}>Register</Link>
+            <Link to="/login" component={Typography.Link}>Login</Link>
             <ShowMoreMenu />
         </Space>
     </div>

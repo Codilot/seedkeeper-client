@@ -1,23 +1,25 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Button, Row, Col, Space } from 'antd';
+import { Button, Row, Col, Typography, Space } from 'antd';
+import PageLayout from '../page_layout'
+import Headline from '../typography/Headline'
+const { Text } = Typography;
 
 const Home = () => (
-    <Row gutter={[8, { xs: 8, md: 16 }]}>
-        <Col className="gutter-row" xs={{ span: 20, offset: 2 }} lg={{ span: 12, offset: 6 }}>
-            <h1 className={"foo"}>Saatgut erhalten durch Vermehrung</h1>
-            <p className={"bar"}>My text bla bla bla</p>
-            <Row gutter={[8, 8]}>
-            <Col className="gutter-row" xs={{ span: 20, offset: 2 }} lg={{ span: 12, offset: 6 }}>
-                <Button size="large" type="primary" block><Link to="/register">Register</Link></Button>
-            </Col>
-             <Col className="gutter-row" xs={{ span: 20, offset: 2 }} lg={{ span: 12, offset: 6 }}>   
-                <Button size="large" type="default" block><Link to="/login">Login</Link></Button>
-            </Col>
-            </Row>
+    <PageLayout>
+        <Space style={{padding: "24px 0", textAlign: "center"}} direction="vertical">
+            <Headline>Saatgut erhalten<br /> durch Vermehrung</Headline>
+            <Text strong>Schutzen Sie die Vielfalt durch den Anbau von traditionellen Gemüsesorten und der Ernte eigenes Saatgut</Text>
+        </Space>
+        <Row gutter={[8, 8]}>
+        <Col className="gutter-row" xs={{ span: 24 }} lg={{ span: 12, offset: 6 }}>
+            <Button size="large" type="primary" block><Link to="/register">Register</Link></Button>
         </Col>
-        
-    </Row>
+        <Col className="gutter-row" xs={{ span: 24 }} lg={{ span: 12, offset: 6 }}>   
+            <Button size="large" type="default" block><Link to="/login">Login</Link></Button>
+        </Col>
+        </Row>
+    </PageLayout>
 )
 
 export default Home;
