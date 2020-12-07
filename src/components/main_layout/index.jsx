@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 
-const PageLayout = ({ children }) => (
+const MainLayout = ({ children }) => (
     <Row>
         <Col
             xs={{ span: 20, offset: 2 }}
@@ -12,4 +12,4 @@ const PageLayout = ({ children }) => (
     </Row>
 );
 
-export default PageLayout;
+export default MainLayout;

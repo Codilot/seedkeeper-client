@@ -5,7 +5,8 @@ import {
     Route,
     Link
   } from "react-router-dom";
-  
+
+import ConfirmEmail from './components/confirm_email'
 import Register from './components/register'
 import Login from './components/login'
 import Home from './components/home'
@@ -18,32 +19,35 @@ const { Header, Content, Footer } = Layout;
 const styles = {
     header: { position: 'fixed', zIndex: 1, width: '100%', padding: '0 10px' },
     navbar: { position: "relative" },
-    content: { marginTop: 64, minHeight: '88%' },
-    contentInner: { paddingTop: 20 },
-    footer: { textAlign: 'center' }
+    contentInner: { paddingTop: 64,},
+    footer: { textAlign: 'center' },
+    layout: { height: '100%'}
 }
 
 const App = () => (
     <Router>
-        <Layout className="App">
+        <Layout style={styles.layout} className="App">
             <Header style={styles.header}>
                 <nav style={styles.navbar}>
                     <Brand />
                     <MainMenu />
                 </nav>
             </Header>
-            <Content style={styles.content}>
+            <Content>
                 <div style={styles.contentInner}>
-                <Switch>
-                    <Route path="/register">
-                        <Register />
-                    </Route>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
+                    <Switch>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
+                        <Route path="/confirm">
+                            <ConfirmEmail />
+                        </Route>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
                     </Switch>
                 </div>
             </Content>

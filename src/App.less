@@ -2,6 +2,13 @@
 @import "~antd/dist/antd.less"; // Import Ant Design styles by less entry
 // @import 'your-theme-file.less'; --> variables to override above
 
+@xxl: ~"only screen and (min-width: 1600px)";
+@xl: ~"only screen and (min-width: 1200px)";
+@lg: ~"only screen and (min-width: 992px)";
+@md: ~"only screen and (min-width: 768px)";
+@sm: ~"only screen and (min-width: 576px)";
+// xs	screen < 576px 
+
 
 @primary-color: #1890ff;
 
@@ -10,6 +17,12 @@
 
 body {
   font-family: 'Heebo', sans-serif;
+}
+
+@media @md {
+  main {
+    padding-top: 80px;;
+  }
 }
 
 h1 {
