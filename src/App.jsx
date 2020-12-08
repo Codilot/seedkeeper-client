@@ -5,7 +5,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
-
+import axios from 'axios';
 import ConfirmEmail from './components/confirm_email'
 import Register from './components/register'
 import Login from './components/login'
@@ -24,36 +24,60 @@ const styles = {
     layout: { height: '100%'}
 }
 
-const App = () => (
-    <Router>
-        <Layout style={styles.layout} className="App">
-            <Header style={styles.header}>
-                <nav style={styles.navbar}>
-                    <Brand />
-                    <MainMenu />
-                </nav>
-            </Header>
-            <Content>
-                <div style={styles.contentInner}>
-                    <Switch>
-                        <Route path="/login">
-                            <Login />
-                        </Route>
-                        <Route path="/confirm">
-                            <ConfirmEmail />
-                        </Route>
-                        <Route path="/login">
-                            <Login />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </div>
-            </Content>
-            <Footer style={styles.footer}>©2020 Created by Codilot</Footer>
-        </Layout>
-    </Router>
-);
+
+
+const App = () => {
+    const getValuationTemplates = (token) => {
+        axios.get('https://seedkeeper.herokuapp.com/templates', {
+          headers: { Authorization: `Bearer ${token}`}
+        })
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    
+    const onLoggedIn = authData => {
+        console.log(authData);
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        getValuationTemplates(authData.token)
+    }
+
+    return (
+        <Router>
+            <Layout style={styles.layout} className="App">
+                <Header style={styles.header}>
+                    <nav style={styles.navbar}>
+                        <Brand />
+                        <MainMenu />
+                    </nav>
+                </Header>
+                <Content>
+                    <div style={styles.contentInner}>
+                        <Switch>
+                            <Route path="/login">
+                                <Login onLoggedIn={onLoggedIn} />
+                            </Route>
+                            <Route path="/confirm">
+                                <ConfirmEmail />
+                            </Route>
+                            <Route path="/register">
+                                <Register />
+                            </Route>
+                            <Route path="/">
+                                <Home />
+                            </Route>
+                        </Switch>
+                    </div>
+                </Content>
+                <Footer style={styles.footer}>©2020 Created by Codilot</Footer>
+            </Layout>
+        </Router>
+    )
+};
 
 export default App;
