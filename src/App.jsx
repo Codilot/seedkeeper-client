@@ -4,12 +4,13 @@ import {
     Switch,
     Route,
     Link
-  } from "react-router-dom";
-import axios from 'axios';
+} from "react-router-dom";
+import axios from "axios";
 import ConfirmEmail from './components/confirm_email'
 import Register from './components/register'
 import Login from './components/login'
 import Home from './components/home'
+import ValuationTemplateList from './components/valuation_templates/ValuationTemplateList'
 import MainMenu from './components/navigation/MainMenu'
 import Brand from './components/brand'
 import './App.less';
@@ -44,7 +45,6 @@ const App = () => {
         console.log(authData);
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
-        getValuationTemplates(authData.token)
     }
 
     return (
@@ -61,6 +61,9 @@ const App = () => {
                         <Switch>
                             <Route path="/login">
                                 <Login onLoggedIn={onLoggedIn} />
+                            </Route>
+                            <Route path="/valuation-templates">
+                                <ValuationTemplateList />
                             </Route>
                             <Route path="/confirm">
                                 <ConfirmEmail />
