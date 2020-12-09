@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-    selectAllTemplates,
-    fetchTemplates,
-} from "../../redux/valuationTemplatesSlice";
+import { selectAllTemplates, fetchTemplates } from "./valuationTemplatesSlice";
 
 const ValuationTemplateList = () => {
     const dispatch = useDispatch();

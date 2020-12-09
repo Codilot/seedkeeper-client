@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import valuationTemplatesReducer from "./valuationTemplatesSlice";
+import valuationTemplatesReducer from "./features/valuation_templates/valuationTemplatesSlice";
 
 export default configureStore({
     reducer: {

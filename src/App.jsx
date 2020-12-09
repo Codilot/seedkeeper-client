@@ -10,7 +10,7 @@ import ConfirmEmail from './components/confirm_email'
 import Register from './components/register'
 import Login from './components/login'
 import Home from './components/home'
-import ValuationTemplateList from './components/valuation_templates/ValuationTemplateList'
+import ValuationTemplateList from './features/valuation_templates/ValuationTemplateList'
 import MainMenu from './components/navigation/MainMenu'
 import Brand from './components/brand'
 import './App.less';
@@ -28,20 +28,8 @@ const styles = {
 
 
 const App = () => {
-    const getValuationTemplates = (token) => {
-        axios.get('https://seedkeeper.herokuapp.com/templates', {
-          headers: { Authorization: `Bearer ${token}`}
-        })
-        .then(response => {
-            console.log(response.data)
-            return response.data
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    
-    const onLoggedIn = authData => {
+
+        const onLoggedIn = authData => {
         console.log(authData);
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
