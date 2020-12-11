@@ -1,35 +1,22 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Button, Row, Col, Typography, Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Headline from '../typography/Headline'
 import MainLayout from '../main_layout';
 const { Text } = Typography;
+import { auth } from '../../features/auth/auth'
 
 
-const Login = (props) => {
+const Login = () => {
 
-    
     const onFinish = values => {
-        console.log('Received values of form: ', values);
-        axios.post('https://seedkeeper.herokuapp.com/login', {
-            Username: values.username,
-            Password: values.password
-        })
-        .then(response => {
-            const data = response.data;
-            props.onLoggedIn(data);
-        })
-            .catch(e => {
-            console.log(e)
-            console.log('no such user')
-        });
+        auth.login(values.username, values.password)
     };
     
-      const onFinishFailed = errorInfo => {
+    const onFinishFailed = errorInfo => {
         console.log('Failed:', errorInfo);
-      };
+    };
 
     return (
         <MainLayout>

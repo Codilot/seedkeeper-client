@@ -5,6 +5,7 @@ import {
     createEntityAdapter,
 } from "@reduxjs/toolkit";
 import axios from "axios";
+import { authHeader } from "../../helpers/auth-header";
 
 const valuationTemplatesAdapter = createEntityAdapter({
     selectId: (template) => template._id,
@@ -19,14 +20,17 @@ const initialState = valuationTemplatesAdapter.getInitialState({
 export const fetchTemplates = createAsyncThunk(
     "valuationTemplates/fetchTemplates",
     async () => {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-            "https://seedkeeper.herokuapp.com/templates",
-            {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-        );
-        return response.data;
+        try {
+            const response = await axios.get(
+                    "https://seedkeeper.herokuapp.com/templates",
+                    {
+                        headers: authHeader(),
+                    }
+            );
+            return response.data;
+        } catch (err) {
+            console.log(error);
+        }
     }
 );
 
