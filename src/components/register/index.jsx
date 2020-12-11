@@ -5,10 +5,11 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import MainLayout from '../main_layout'
 import Headline from '../typography/Headline'
 const { Text } = Typography;
+import { auth } from '../../features/auth/auth'
 
 const Register = (props) => {
     const onFinish = values => {
-        console.log('Received values of form: ', values);
+        auth.register(values.username, values.email, values.password)
     };
     
       const onFinishFailed = errorInfo => {

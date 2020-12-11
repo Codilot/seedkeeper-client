@@ -28,13 +28,34 @@ const login = (username, password) => {
         });
 };
 
-function logout() {
+const register = (username, email, password) => {
+    console.log(`Received values of form: ${username}  ${email} ${password}`);
+    axios
+        .post("https://seedkeeper.herokuapp.com/users", {
+            username: username,
+            password: password,
+            email: email,
+        })
+        .then((response) => {
+            console.log(response.message);
+            if (response.data) {
+                console.log(response.data);
+            }
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+            console.log(error.message);
+        });
+};
+
+const logout = () => {
     // remove user from local storage to log user out
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-}
+};
 
 export const auth = {
     login,
     logout,
+    register,
 };
