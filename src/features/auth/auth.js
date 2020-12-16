@@ -37,9 +37,8 @@ const register = (username, email, password) => {
             email: email,
         })
         .then((response) => {
-            console.log(response.message);
             if (response.data) {
-                console.log(response.data);
+                return response.data;
             }
         })
         .catch((error) => {

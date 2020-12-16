@@ -3,9 +3,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Redirect
 } from "react-router-dom";
-import axios from "axios";
+import PrivateRoute from './components/private_route'
 import ConfirmEmail from './components/confirm_email'
 import Register from './components/register'
 import Login from './components/login'
@@ -39,21 +39,20 @@ const App = () => (
             <Content>
                 <div style={styles.contentInner}>
                     <Switch>
-                        <Route path="/login">
-                            <Login />
-                        </Route>
-                        <Route path="/valuation-templates">
-                            <ValuationTemplateList />
-                        </Route>
+                        <PrivateRoute path="/valuation-templates" component={ValuationTemplateList} />
                         <Route path="/confirm">
                             <ConfirmEmail />
                         </Route>
                         <Route path="/register">
                             <Register />
                         </Route>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
                         <Route path="/">
                             <Home />
                         </Route>
+                        <Redirect from="*" to="/" />
                     </Switch>
                 </div>
             </Content>

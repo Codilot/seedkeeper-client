@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Button, Row, Col, Typography, Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import MainLayout from '../main_layout'
@@ -8,8 +8,14 @@ const { Text } = Typography;
 import { auth } from '../../features/auth/auth'
 
 const Register = (props) => {
+    const history = useHistory();
     const onFinish = values => {
-        auth.register(values.username, values.email, values.password)
+        const response = auth.register(values.username, values.email, values.password)
+        console.log(response)
+        if (response) {
+            history.push("/confirm");
+        }
+        
     };
     
       const onFinishFailed = errorInfo => {
