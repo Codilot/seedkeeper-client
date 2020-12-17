@@ -15,6 +15,7 @@ import MainMenu from './components/navigation/MainMenu'
 import Brand from './components/brand'
 import './App.less';
 import { Layout } from 'antd';
+import Dashboard from './components/dashboard';
 const { Header, Content, Footer } = Layout;
 
 const styles = {
@@ -40,6 +41,7 @@ const App = () => (
                 <div style={styles.contentInner}>
                     <Switch>
                         <PrivateRoute path="/valuation-templates" component={ValuationTemplateList} />
+                        <PrivateRoute path="/dashboard" component={Dashboard} />
                         <Route path="/confirm">
                             <ConfirmEmail />
                         </Route>

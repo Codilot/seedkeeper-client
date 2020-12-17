@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState} from 'react';
+import { Link, Redirect } from "react-router-dom";
 import { Button, Row, Col, Typography, Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Headline from '../typography/Headline'
@@ -9,14 +9,21 @@ import { auth } from '../../features/auth/auth'
 
 
 const Login = () => {
-
+    const [redirect, setRedirect] = useState({ redirect: '' })
+    
     const onFinish = values => {
         auth.login(values.username, values.password)
+        setRedirect((redirect) => ({ redirect : '/dashboard'}))
     };
     
     const onFinishFailed = errorInfo => {
         console.log('Failed:', errorInfo);
+        setRedirect((redirect) => ({ redirect : ''}))
     };
+
+    if (redirect) {
+        return <Redirect to={redirect} />
+      }
 
     return (
         <MainLayout>
